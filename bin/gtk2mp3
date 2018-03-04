@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require 'help_parser'
+
+module Gtk2Mp3
+  VERSION = '1.0.0'
+end
+OPTIONS = HelpParser[Gtk2Mp3::VERSION,<<HELP]
+Usage:
+  gtk2mp3 [:options+]
+Options:
+  -h --help
+  -v --version
+  -f --force  \tSkips mpd prechecks
+  --noinit    \tDon't reset the playlist
+# Notes #
+# Requires MPD/MPC.
+# See https://www.musicpd.org/clients/mpc/.
+HELP
+
+unless OPTIONS.force?
+  unless ['/etc/mpd.conf','~/.mpdconf'].all?{|_|File.exist? File.expand_path _}
+    $stderr.puts 'Missing /etc/mpd.conf and/or ~/.mpdconf'
+    exit 72 # EX_OSFILE
+  end
+  unless system 'ps -C mpd'
+    unless system 'mpd'
+      $stderr.puts 'Could not start the mpd daemon.'
+      exit 69 # EX_UNAVAILABLE
+    end
+  end
+end
+
+unless OPTIONS.noinit?
+  unless system 'mpc clear' and system 'mpc ls | mpc add'
+    $stderr.puts 'Could not initialize mpd\'s playlist'
+    exit 76 # EX_PROTOCOL
+  end
+end
+
+require 'gtk2mp3'
+Gtk3App.main(Gtk2Mp3)
+system 'mpc stop'
