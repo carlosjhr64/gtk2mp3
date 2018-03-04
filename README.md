@@ -11,20 +11,20 @@ A "Next!" button gui for [MPD/MPC](https://www.musicpd.org/).
 
     gtk2mp3 --help
 
-## HELP:
+## HELP
 
-   Usage:
+    Usage:
      gtk2mp3 [:options+]
-   Options:
+    Options:
      -h --help
      -v --version
      -f --force  	Skips mpd prechecks
      --noinit    	Don't reset the playlist
-   # Notes #
-   # Requires MPD/MPC.
-   # See https://www.musicpd.org/clients/mpc/.
+    # Notes #
+    # Requires MPD/MPC.
+    # See https://www.musicpd.org/clients/mpc/.
 
-## INSTALL:
+## INSTALL
 
     $ sudo gem install gtk2mp3
 
