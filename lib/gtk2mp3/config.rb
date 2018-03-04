@@ -9,7 +9,7 @@ module Gtk2Mp3
       Logo: "#{XDG['DATA']}/gtk3app/gtk2mp3/logo.png",
       window: {
         set_title: 'Gtk2Mp3',
-        set_default_size: [200,60],
+        set_default_size: [100,60],
         set_window_position: :center,
       },
       NEXT: [label: 'Next!'],
