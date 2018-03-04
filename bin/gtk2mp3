@@ -35,6 +35,9 @@ unless OPTIONS.noinit?
     $stderr.puts 'Could not initialize mpd\'s playlist'
     exit 76 # EX_PROTOCOL
   end
+  system 'mpc random on'
+  system 'mpc consume off'
+  system 'mpc repeat on'
 end
 
 require 'gtk2mp3'

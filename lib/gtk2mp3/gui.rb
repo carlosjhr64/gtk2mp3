@@ -7,8 +7,20 @@ module Gtk2Mp3
     MUTEX = Mutex.new
     ID = lambda{|_|File.basename(_.strip.split(/\n/).first.strip,'.*')}
 
-    def up(id)
-      @db[id] = @db[id].to_i+1
+    def play?(id)
+      rand(@db[id].to_i+1)==0
+    end
+
+    def random_song
+      n = @list.length
+      loop do
+        id = @list[rand(n)]
+        return id if play?(id)
+      end
+    end
+
+    def next_song
+      @label.text = @playing = ID[`mpc searchplay filename '#{random_song}'`]
     end
 
     def down(id)
@@ -21,13 +33,22 @@ module Gtk2Mp3
         end
       end
     end
+
+    def up(id)
+      @db[id] = @db[id].to_i+1
+    end
     
     def db_update
       if @skipped
         up(@skipped) if Time.now-@time<CONFIG[:PLAYED]
       elsif @played
         down(@played)
-        @label.text = @playing = ID[`mpc current`]
+        @playing = ID[`mpc current`]
+        if play?(@playing)
+          @label.text = @playing
+        else
+          next_song
+        end
       end
       @time,@played,@skipped = Time.now,@playing,nil
     end
@@ -39,18 +60,10 @@ module Gtk2Mp3
       end
     end
 
-    def random_song
-      n = @list.length
-      loop do
-        id = @list[rand(n)]
-        return id if rand(@db[id].to_i+1)==0
-      end
-    end
-
-    def next_song
+    def next_song!
       MUTEX.synchronize do
         @skipped = @playing
-        @label.text = @playing = ID[`mpc searchplay filename '#{random_song}'`]
+        next_song
       end
     end
 
@@ -61,15 +74,16 @@ module Gtk2Mp3
 
       # Build
       vbox = Such::Box.new(window, :VBOX)
-      Such::Button.new(vbox, :next_button!){next_song}
+      Such::Button.new(vbox, :next_button!){next_song!}
       @label = Such::Label.new(vbox)
       menu.each{|_|_.destroy if _.label=='Full Screen' or _.label=='Help'}
       minime.each{|_|_.destroy}
-      minime.append_menu_item(:next_item!){next_song}
+      minime.append_menu_item(:next_item!){next_song!}
 
+      # Inits
       @list = `mpc listall`.lines.map{|_|ID[_]}.uniq
       @skipped=@playing=nil
-      next_song
+      next_song!
       @time,@played = Time.now,@playing
       Thread.new do
         sleep(1) # mpd needs a little time to settle
