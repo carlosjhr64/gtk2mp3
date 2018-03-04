@@ -1,4 +1,5 @@
 Gem::Specification.new do |s|
+
   s.name     = 'gtk2mp3'
   s.version  = '1.0.1'
 
@@ -36,4 +37,5 @@ lib/gtk2mp3/gui.rb
   s.requirements << 'mpc: off'
   s.requirements << 'ruby: ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-linux]'
   s.requirements << 'mpd: Music Player Daemon 0.20.10'
+
 end
