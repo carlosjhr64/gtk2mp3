@@ -67,6 +67,13 @@ module Gtk2Mp3
       end
     end
 
+    def stop_song!
+      MUTEX.synchronize do
+        @skipped = @playing = @played = nil
+        system 'mpc stop'
+      end
+    end
+
     def initialize(program)
       window,minime,menu = program.window,program.mini_menu,program.app_menu
       @db = JSON.parse File.read(CONFIG[:DBM])
@@ -74,10 +81,13 @@ module Gtk2Mp3
 
       # Build
       vbox = Such::Box.new(window, :VBOX)
-      Such::Button.new(vbox, :next_button!){next_song!}
+      hbox = Such::Box.new(vbox, :HBOX)
+      Such::Button.new(hbox, :next_button!){next_song!}
+      Such::Button.new(hbox, :stop_button!){stop_song!}
       @label = Such::Label.new(vbox)
       menu.each{|_|_.destroy if _.label=='Full Screen' or _.label=='Help'}
       minime.each{|_|_.destroy}
+      minime.append_menu_item(:stop_item!){stop_song!}
       minime.append_menu_item(:next_item!){next_song!}
 
       # Inits

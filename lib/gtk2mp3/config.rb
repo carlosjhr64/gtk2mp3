@@ -15,7 +15,11 @@ module Gtk2Mp3
       NEXT: [label: 'Next!'],
       next_button!: [:NEXT, 'clicked'],
       next_item!: [:NEXT, 'activate'],
+      STOP: [label: 'Stop'],
+      stop_button!: [:STOP, 'clicked'],
+      stop_item!: [:STOP, 'activate'],
       VBOX: [:vertical],
+      HBOX: [:horizontal],
       about_dialog: {
         set_program_name: 'Gtk2Mp3',
         set_version: VERSION.semantic(0..1),
