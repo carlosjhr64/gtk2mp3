@@ -3,6 +3,7 @@ require 'gtk3app'
 
 # Standard Libraries
 require 'json'
+require 'shellwords'
 
 # This Gem.
 require_relative 'gtk2mp3/config.rb'

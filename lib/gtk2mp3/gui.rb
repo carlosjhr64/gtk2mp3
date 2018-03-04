@@ -20,7 +20,7 @@ module Gtk2Mp3
     end
 
     def next_song
-      @label.text = @playing = ID[`mpc searchplay filename '#{random_song}'`]
+      @label.text = @playing = ID[`mpc searchplay filename #{random_song.shellescape}`]
     end
 
     def down(id)
