@@ -85,7 +85,7 @@ module Gtk2Mp3
       Such::Button.new(hbox, :next_button!){next_song!}
       Such::Button.new(hbox, :stop_button!){stop_song!}
       @label = Such::Label.new(vbox)
-      menu.each{|_|_.destroy if _.label=='Full Screen' or _.label=='Help'}
+      menu.each{|_|_.destroy if _.key==:fs! or _.key==:help!}
       minime.each{|_|_.destroy}
       minime.append_menu_item(:stop_item!){stop_song!}
       minime.append_menu_item(:next_item!){next_song!}
