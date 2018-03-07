@@ -2,7 +2,7 @@
 require 'help_parser'
 
 module Gtk2Mp3
-  VERSION = '1.0.1'
+  VERSION = '1.1.0'
 end
 OPTIONS = HelpParser[Gtk2Mp3::VERSION,<<HELP]
 Usage:
@@ -10,36 +10,30 @@ Usage:
 Options:
   -h --help
   -v --version
-  -f --force  \tSkips mpd prechecks
   --noinit    \tDon't reset the playlist
 # Notes #
 # Requires MPD/MPC.
 # See https://www.musicpd.org/clients/mpc/.
 HELP
 
-unless OPTIONS.force?
-  unless ['/etc/mpd.conf','~/.mpdconf'].all?{|_|File.exist? File.expand_path _}
-    $stderr.puts 'Missing /etc/mpd.conf and/or ~/.mpdconf'
-    exit 72 # EX_OSFILE
-  end
+unless OPTIONS.noinit?
   unless system 'ps -C mpd'
     unless system 'mpd'
       $stderr.puts 'Could not start the mpd daemon.'
       exit 69 # EX_UNAVAILABLE
     end
   end
-end
-
-unless OPTIONS.noinit?
-  unless system 'mpc clear' and system 'mpc ls | mpc add'
+  unless system 'mpc --wait update' and
+      system 'mpc clear'            and
+      system 'mpc ls | mpc add'     and
+      system 'mpc consume off'      and
+      system 'mpc repeat off'       and
+      system 'mpc random on'        and
+      system 'mpc single on'
     $stderr.puts 'Could not initialize mpd\'s playlist'
     exit 76 # EX_PROTOCOL
   end
-  system 'mpc random on'
-  system 'mpc consume off'
-  system 'mpc repeat on'
 end
 
 require 'gtk2mp3'
 Gtk3App.main(Gtk2Mp3)
-system 'mpc stop'

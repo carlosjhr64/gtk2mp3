@@ -4,6 +4,8 @@ module Gtk2Mp3
   CONFIG = {
     PLAYED: 30,
     DBM: "#{XDG['CACHE']}/gtk3app/gtk2mp3/dbm.json",
+    BUTTONS: [:next_button!, :stop_button!],
+    ITEMS: [:next_item!, :stop_item!],
     thing: {
       HelpFile: 'https://github.com/carlosjhr64/gtk2mp3',
       Logo: "#{XDG['DATA']}/gtk3app/gtk2mp3/logo.png",

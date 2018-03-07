@@ -20,7 +20,7 @@ module Gtk2Mp3
     end
 
     def next_song
-      @label.text = @playing = ID[`mpc searchplay filename #{random_song.shellescape}`]
+      @label.text = @playing = ID[`mpc -f '%file%' searchplay filename #{random_song.shellescape}`]
     end
 
     def down(id)
@@ -43,12 +43,7 @@ module Gtk2Mp3
         up(@skipped) if Time.now-@time<CONFIG[:PLAYED]
       elsif @played
         down(@played)
-        @playing = ID[`mpc current`]
-        if play?(@playing)
-          @label.text = @playing
-        else
-          next_song
-        end
+        next_song
       end
       @time,@played,@skipped = Time.now,@playing,nil
     end
@@ -75,23 +70,25 @@ module Gtk2Mp3
     end
 
     def initialize(program)
-      window,minime,menu = program.window,program.mini_menu,program.app_menu
-      @db = JSON.parse File.read(CONFIG[:DBM])
-      window.signal_connect('delete-event'){File.write(CONFIG[:DBM], JSON.pretty_generate(@db))}
-
       # Build
+      window,minime,menu = program.window,program.mini_menu,program.app_menu
       vbox = Such::Box.new(window, :VBOX)
       hbox = Such::Box.new(vbox, :HBOX)
-      Such::Button.new(hbox, :next_button!){next_song!}
-      Such::Button.new(hbox, :stop_button!){stop_song!}
+      Such::Button.new(hbox, :next_button!){next_song!} if CONFIG[:BUTTONS].include?(:next_button!)
+      Such::Button.new(hbox, :stop_button!){stop_song!} if CONFIG[:BUTTONS].include?(:stop_button!)
       @label = Such::Label.new(vbox)
       menu.each{|_|_.destroy if _.key==:fs! or _.key==:help!}
       minime.each{|_|_.destroy}
-      minime.append_menu_item(:stop_item!){stop_song!}
-      minime.append_menu_item(:next_item!){next_song!}
+      minime.append_menu_item(:stop_item!){stop_song!} if CONFIG[:ITEMS].include?(:stop_item!)
+      minime.append_menu_item(:next_item!){next_song!} if CONFIG[:ITEMS].include?(:next_item!)
 
       # Inits
+      @db = JSON.parse File.read(CONFIG[:DBM])
       @list = `mpc listall`.lines.map{|_|ID[_]}.uniq
+      # A fuzzy delete of possibly gone keys...
+      @db.keys.each{|id| down(id) unless @list.include?(id)}
+
+      # Run
       @skipped=@playing=nil
       next_song!
       @time,@played = Time.now,@playing
@@ -99,7 +96,10 @@ module Gtk2Mp3
         sleep(1) # mpd needs a little time to settle
         mpc_idle_player
       end
-
+      window.signal_connect('delete-event') do
+        stop_song!
+        File.write(CONFIG[:DBM], JSON.pretty_generate(@db))
+      end
       window.show_all
     end
   end

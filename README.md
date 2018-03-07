@@ -23,7 +23,6 @@ A "Next!" button gui for MPD/MPC.
     Options:
       -h --help
       -v --version
-      -f --force  	Skips mpd prechecks
       --noinit    	Don't reset the playlist
     # Notes #
     # Requires MPD/MPC.
