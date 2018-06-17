@@ -2,7 +2,7 @@
 require 'help_parser'
 
 module Gtk2Mp3
-  VERSION = '1.1.0'
+  VERSION = '1.2.0'
 end
 OPTIONS = HelpParser[Gtk2Mp3::VERSION,<<HELP]
 Usage:

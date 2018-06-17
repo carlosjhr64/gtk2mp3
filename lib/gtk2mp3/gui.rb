@@ -96,11 +96,12 @@ module Gtk2Mp3
         sleep(1) # mpd needs a little time to settle
         mpc_idle_player
       end
-      window.signal_connect('delete-event') do
-        stop_song!
-        File.write(CONFIG[:DBM], JSON.pretty_generate(@db))
-      end
       window.show_all
+    end
+
+    def finalize
+      stop_song!
+      File.write(CONFIG[:DBM], JSON.pretty_generate(@db))
     end
   end
 end
