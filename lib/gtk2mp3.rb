@@ -1,13 +1,19 @@
-# This is a Gtk3App.
-require 'gtk3app'
+module Gtk2Mp3
+  VERSION = '1.3.0'
 
-# Standard Libraries
-require 'json'
-require 'shellwords'
+  def self.requires
+    # This is a Gtk3App.
+    require 'gtk3app'
 
-# This Gem.
-require_relative 'gtk2mp3/config.rb'
-require_relative 'gtk2mp3/gui.rb'
+    # Standard Libraries
+    require 'json'
+    require 'shellwords'
+
+    # This Gem.
+    require_relative 'gtk2mp3/config.rb'
+    require_relative 'gtk2mp3/gui.rb'
+  end
+end
 
 # Requires:
 #`ruby`

@@ -10,7 +10,7 @@ A "Next!" button gui for MPD/MPC.
 
 ## SYNOPSIS
 
-    gtk2mp3 --help
+    gtk2mp3
 
 ## INSTALL
 

@@ -79,8 +79,8 @@ module Gtk2Mp3
       @label = Such::Label.new(vbox)
       menu.each{|_|_.destroy if _.key==:fs! or _.key==:help!}
       minime.each{|_|_.destroy}
-      minime.append_menu_item(:stop_item!){stop_song!} if CONFIG[:ITEMS].include?(:stop_item!)
-      minime.append_menu_item(:next_item!){next_song!} if CONFIG[:ITEMS].include?(:next_item!)
+      minime.add_menu_item(:stop_item!){stop_song!} if CONFIG[:ITEMS].include?(:stop_item!)
+      minime.add_menu_item(:next_item!){next_song!} if CONFIG[:ITEMS].include?(:next_item!)
 
       # Inits
       @db = JSON.parse File.read(CONFIG[:DBM])
