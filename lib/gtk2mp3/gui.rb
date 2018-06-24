@@ -83,7 +83,7 @@ module Gtk2Mp3
       minime.add_menu_item(:next_item!){next_song!} if CONFIG[:ITEMS].include?(:next_item!)
 
       # Inits
-      @db = JSON.parse File.read(CONFIG[:DBM])
+      @db = File.exist?(_=CONFIG[:DBM]) ?  JSON.parse(File.read(_)) :  {}
       @list = `mpc listall`.lines.map{|_|ID[_]}.uniq
       # A fuzzy delete of possibly gone keys...
       @db.keys.each{|id| down(id) unless @list.include?(id)}
