@@ -40,7 +40,8 @@ module Gtk2Mp3
     
     def db_update
       if @skipped
-        up(@skipped) if Time.now-@time<CONFIG[:PLAYED]
+        up(@skipped) if Time.now - @time < CONFIG[:PLAYED]/2
+        down(@skipped) if Time.now - @time > CONFIG[:PLAYED]
       elsif @played
         down(@played)
         next_song

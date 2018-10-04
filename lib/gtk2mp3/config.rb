@@ -2,7 +2,7 @@ module Gtk2Mp3
   using Rafini::String
   APPDIR = File.dirname File.dirname __dir__
   CONFIG = {
-    PLAYED: 30,
+    PLAYED: 120,
     DBM: "#{XDG['CACHE']}/gtk3app/gtk2mp3/dbm.json",
     BUTTONS: [:next_button!, :stop_button!],
     ITEMS: [:next_item!, :stop_item!],
