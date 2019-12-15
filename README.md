@@ -14,7 +14,7 @@ A "Next!" button gui for MPD/MPC.
 
 ## INSTALL
 
-    $ sudo gem install gtk2mp3
+    $ gem install gtk2mp3
 
 ## HELP
 
@@ -28,3 +28,6 @@ A "Next!" button gui for MPD/MPC.
     # Requires MPD/MPC.
     # See https://www.musicpd.org/clients/mpc/.
 
+## MORE
+
+Signal USR1 will trigger `Next!` song.
