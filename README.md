@@ -25,9 +25,7 @@ A "Next!" button gui for MPD/MPC.
       -v --version
       --noinit    	Don't reset the playlist
     # Notes #
+    # Signal USR1 will trigger Next! song.
     # Requires MPD/MPC.
     # See https://www.musicpd.org/clients/mpc/.
 
-## MORE
-
-Signal USR1 will trigger `Next!` song.
