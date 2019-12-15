@@ -1,6 +1,17 @@
 module Gtk2Mp3
-  def self.run(program)
+  def Gtk2Mp3.run(program)
     GUI.new(program)
+  end
+
+  @next = false
+  def Gtk2Mp3.next!(q=false)
+    if q
+      @next = true
+    elsif @next
+      @next = false
+      return true
+    end
+    return false
   end
 
   class GUI
@@ -98,6 +109,12 @@ module Gtk2Mp3
         mpc_idle_player
       end
       window.show_all
+
+      # Handle Signal.trap
+      GLib::Timeout.add(750) do
+        next_song! if Gtk2Mp3.next!
+        true # repeat
+      end
     end
 
     def finalize

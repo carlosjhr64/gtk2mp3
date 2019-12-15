@@ -34,5 +34,7 @@ unless OPTIONS.noinit?
 end
 
 Gtk2Mp3.requires
+Signal.trap :USR1 do
+  Gtk2Mp3.next!(true)
+end
 Gtk3App.main(Gtk2Mp3)
-
