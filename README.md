@@ -26,6 +26,8 @@ A "Next!" button gui for MPD/MPC.
       --noinit    	Don't reset the playlist
     # Notes #
     # Signal USR1 will trigger Next! song.
+    # Signal USR2 will trigger Stop song.
+    # Signal TERM will quit.
     # Requires MPD/MPC.
     # See https://www.musicpd.org/clients/mpc/.
 
