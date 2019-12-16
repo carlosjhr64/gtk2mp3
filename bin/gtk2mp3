@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 require 'help_parser'
-require 'gtk2mp3'
 
-OPTIONS = HelpParser[Gtk2Mp3::VERSION, <<HELP]
+OPTIONS = HelpParser['1.6.0', <<HELP]
 Usage:
   gtk2mp3 [:options+]
 Options:
@@ -11,6 +10,8 @@ Options:
   --noinit    \tDon't reset the playlist
 # Notes #
 # Signal USR1 will trigger Next! song.
+# Signal USR2 will trigger Stop song.
+# Signal TERM will quit.
 # Requires MPD/MPC.
 # See https://www.musicpd.org/clients/mpc/.
 HELP
@@ -34,8 +35,6 @@ unless OPTIONS.noinit?
   end
 end
 
-Gtk2Mp3.requires
-Signal.trap :USR1 do
-  Gtk2Mp3.next!(true)
-end
+require 'gtk2mp3'
+[:USR1,:USR2,:TERM].each{|_|Signal.trap(_){Gtk2Mp3.signal!(_)}}
 Gtk3App.main(Gtk2Mp3)

@@ -3,17 +3,6 @@ module Gtk2Mp3
     GUI.new(program)
   end
 
-  @next = false
-  def Gtk2Mp3.next!(q=false)
-    if q
-      @next = true
-    elsif @next
-      @next = false
-      return true
-    end
-    return false
-  end
-
   class GUI
     MUTEX = Mutex.new
     ID = lambda{|_|File.basename(_.strip.split(/\n/).first.strip,'.*')}
@@ -111,8 +100,15 @@ module Gtk2Mp3
       window.show_all
 
       # Handle Signal.trap
-      GLib::Timeout.add(750) do
-        next_song! if Gtk2Mp3.next!
+      GLib::Timeout.add(500) do
+        case Gtk2Mp3.signal!
+        when :USR1
+          next_song! 
+        when :USR2
+          stop_song!
+        when :TERM
+          Gtk3App.quit!
+        end
         true # repeat
       end
     end
