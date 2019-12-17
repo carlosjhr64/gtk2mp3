@@ -82,7 +82,7 @@ module Gtk2Mp3
       hbox = Such::Box.new(vbox, :HBOX)
       Such::Button.new(hbox, :next_button!){next_song!} if CONFIG[:BUTTONS].include?(:next_button!)
       Such::Button.new(hbox, :stop_button!){stop_song!} if CONFIG[:BUTTONS].include?(:stop_button!)
-      @label = Such::Label.new(vbox)
+      @label = Such::Label.new(vbox, :id_label!)
       menu.each{|_|_.destroy if _.key==:fs! or _.key==:help!}
       minime.each{|_|_.destroy}
       minime.add_menu_item(:stop_item!){stop_song!} if CONFIG[:ITEMS].include?(:stop_item!)

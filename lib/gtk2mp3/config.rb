@@ -20,6 +20,7 @@ module Gtk2Mp3
       STOP: [label: 'Stop'],
       stop_button!: [:STOP, 'clicked'],
       stop_item!: [:STOP, 'activate'],
+      id_label!: [set_selectable: true],
       VBOX: [:vertical],
       HBOX: [:horizontal],
       about_dialog: {
