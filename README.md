@@ -24,6 +24,7 @@ A "Next!" button gui for MPD/MPC.
       -h --help
       -v --version
       --noinit    	Don't reset the playlist
+      -V --verbose
     # Notes #
     # Signal USR1 will trigger Next! song.
     # Signal USR2 will trigger Stop song.
