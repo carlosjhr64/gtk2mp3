@@ -56,7 +56,7 @@ module Gtk2Mp3
 
     def mpc_idle_player
       loop do
-        system 'mpc idle player'
+        system "mpc idle player #{TO_DEV_NULL}"
         MUTEX.synchronize{db_update}
       end
     end
@@ -71,7 +71,7 @@ module Gtk2Mp3
     def stop_song!
       MUTEX.synchronize do
         @skipped = @playing = @played = nil
-        system 'mpc stop'
+        system "mpc stop #{TO_DEV_NULL}"
       end
     end
 

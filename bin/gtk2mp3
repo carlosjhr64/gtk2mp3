@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 require 'help_parser'
 
-OPTIONS = HelpParser['1.6.0', <<HELP]
+OPTIONS = HelpParser['2.5.191217', <<HELP]
 Usage:
   gtk2mp3 [:options+]
 Options:
   -h --help
   -v --version
   --noinit    \tDon't reset the playlist
+  -V --verbose
 # Notes #
 # Signal USR1 will trigger Next! song.
 # Signal USR2 will trigger Stop song.
@@ -16,20 +17,22 @@ Options:
 # See https://www.musicpd.org/clients/mpc/.
 HELP
 
+TO_DEV_NULL = OPTIONS.verbose? ? '' : '> /dev/null'
 unless OPTIONS.noinit?
-  unless system 'ps -C mpd'
-    unless system 'mpd'
+  # check if mpd is already running
+  unless system "ps -C mpd #{TO_DEV_NULL}"
+    unless system "mpd #{TO_DEV_NULL}"
       $stderr.puts 'Could not start the mpd daemon.'
       exit 69 # EX_UNAVAILABLE
     end
   end
-  unless system "mpc --wait update" and
-      system "mpc clear"            and
-      system "mpc ls | mpc add"     and
-      system "mpc consume off"      and
-      system "mpc repeat off"       and
-      system "mpc random on"        and
-      system "mpc single on"
+  unless system "mpc --wait update #{TO_DEV_NULL}" and
+      system "mpc clear #{TO_DEV_NULL}"            and
+      system "mpc ls | mpc add"                    and
+      system "mpc consume off #{TO_DEV_NULL}"      and
+      system "mpc repeat off #{TO_DEV_NULL}"       and
+      system "mpc random on #{TO_DEV_NULL}"        and
+      system "mpc single on #{TO_DEV_NULL}"
     $stderr.puts 'Could not initialize mpd\'s playlist'
     exit 76 # EX_PROTOCOL
   end

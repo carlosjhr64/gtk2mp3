@@ -11,7 +11,7 @@ module Gtk3App
 end
 
 module Gtk2Mp3
-  VERSION = '1.6.0'
+  VERSION = '2.5.191217'
 
   @signal = nil
   def Gtk2Mp3.signal!(q=nil)
