@@ -1,12 +1,11 @@
 #! ruby
 require 'test/unit'
-require 'gtk2mp3'
 
 class TestVersion < Test::Unit::TestCase
   def test_version
     assert_nothing_raised() do
       # Just check that it loads
-      Gtk2Mp3.requires
+      require 'gtk2mp3'
     end
   end
 end
