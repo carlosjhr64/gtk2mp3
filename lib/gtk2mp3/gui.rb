@@ -20,9 +20,12 @@ module Gtk2Mp3
     end
 
     def next_song
-      @label.text = @playing = ID[`mpc -f '%file%' searchplay filename #{random_song.shellescape}`]
+      id = random_song
+      @label.text = @playing = ID[`mpc -f '%file%' searchplay filename #{id.shellescape}`]
     end
 
+    # decrementing count makes the id
+    # more likely to be played
     def down(id)
       if count=@db[id]
         count -= 1
@@ -34,6 +37,8 @@ module Gtk2Mp3
       end
     end
 
+    # incrementing count makes the id
+    # less likely to be played
     def up(id)
       @db[id] = @db[id].to_i+1
     end
