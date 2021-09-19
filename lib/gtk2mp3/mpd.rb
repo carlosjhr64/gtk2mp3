@@ -1,5 +1,5 @@
 class Gtk2Mp3
-  def Gtk2Mp3.setup_mpd
+  def Gtk2Mp3.system_mpd
     # check if mpd is already running
     unless system 'ps -C mpd'
       unless system 'mpd'
@@ -7,6 +7,9 @@ class Gtk2Mp3
         exit 69 # EX_UNAVAILABLE
       end
     end
+  end
+
+  def Gtk2Mp3.system_mpc
     # initialize playlist
     unless system 'mpc --wait update' and
         system 'mpc clear'            and

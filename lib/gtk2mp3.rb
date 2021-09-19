@@ -9,6 +9,7 @@ class Gtk2Mp3
       --minime       \t Real minime
       --notoggle     \t Minime wont toggle decorated and keep above
       --notdecorated \t Dont decorate window
+      --update       \t Updates and sets playlist to the entire collection
     # Note:
     # Requires MPD/MPC.
     # See https://www.musicpd.org/clients/mpc/.
@@ -16,7 +17,8 @@ class Gtk2Mp3
 
   def Gtk2Mp3.init
     require_relative 'gtk2mp3/mpd'
-    Gtk2Mp3.setup_mpd
+    Gtk2Mp3.system_mpd
+    Gtk2Mp3.system_mpc if ARGV.include? '--update'
   end
 
   def Gtk2Mp3.run
