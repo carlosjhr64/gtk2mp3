@@ -5,18 +5,18 @@ Gem::Specification.new do |s|
 
   s.homepage = 'https://github.com/carlosjhr64/gtk2mp3'
 
-  s.author   = 'carlosjhr64'
+  s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
   s.date     = '2021-09-19'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
-A "Next!" button gui for MPD/MPC.
+A "Next!" button gui for [MPD/MPC](https://www.musicpd.org/).
 DESCRIPTION
 
   s.summary = <<SUMMARY
-A "Next!" button gui for MPD/MPC.
+A "Next!" button gui for [MPD/MPC](https://www.musicpd.org/).
 SUMMARY
 
   s.require_paths = ['lib']
@@ -25,16 +25,15 @@ LICENSE
 README.md
 bin/gtk2mp3
 cache/README.txt
-data/VERSION
 data/logo.png
 lib/gtk2mp3.rb
 lib/gtk2mp3/config.rb
 lib/gtk2mp3/gui.rb
+lib/gtk2mp3/mpd.rb
   )
   s.executables << 'gtk2mp3'
-  s.add_runtime_dependency 'help_parser', '~> 6.5', '>= 6.5.0'
-  s.add_runtime_dependency 'gtk3app', '~> 3.0', '>= 3.0.0'
-  s.requirements << 'ruby: ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]'
-  s.requirements << 'mpd: Music Player Daemon 0.21.16 (0.21.16)'
+  s.add_runtime_dependency 'gtk3app', '~> 5.3', '>= 5.3.210919'
+  s.requirements << 'ruby: ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]'
+  s.requirements << 'mpd: Music Player Daemon 0.22.11 (0.22.11)'
 
 end

@@ -17,21 +17,21 @@ $ gtk2mp3
 $ gem install gtk2mp3
 ```
 ## HELP
-
-    Usage:
-      gtk2mp3 [:options+]
-    Options:
-      -h --help
-      -v --version
-      --noinit    	Don't reset the playlist
-      -V --verbose
-    # Notes #
-    # Signal USR1 will trigger Next! song.
-    # Signal USR2 will trigger Stop song.
-    # Signal TERM will quit.
-    # Requires MPD/MPC.
-    # See https://www.musicpd.org/clients/mpc/.
-
+```console
+$ gtk2mp3 --help
+Usage:
+  gtk2mp3 [:options+]
+Options:
+  -h --help
+  -v --version
+  --minime       	 Real minime
+  --notoggle     	 Minime wont toggle decorated and keep above
+  --notdecorated 	 Dont decorate window
+  --update       	 Updates and sets playlist to the entire collection
+# Note:
+# Requires MPD/MPC.
+# See https://www.musicpd.org/clients/mpc/.
+```
 ## LICENSE:
 
 (The MIT License)
