@@ -33,16 +33,5 @@ class Gtk2Mp3
     app_menu: {
       add_menu_item: [:minime!, :about!, :quit!]
     },
-
-    # TODO?
- #  stop_item!: [:STOP, 'activate'],
- #  ITEMS: [:next_item!, :stop_item!],
-
- #  window: {
- #    set_title: 'Gtk2Mp3',
- #    set_default_size: [100,60],
- #    set_window_position: :center,
- #  },
- #  next_item!: [:NEXT, 'activate'],
   }
 end

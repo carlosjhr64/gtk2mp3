@@ -49,5 +49,3 @@ class Gtk2Mp3
     end
   end
 end
-
-
