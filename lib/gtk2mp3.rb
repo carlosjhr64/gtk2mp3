@@ -1,34 +1,36 @@
-require 'json'
-require 'shellwords'
+class Gtk2Mp3
+  VERSION = '3.0.210919'
+  HELP = <<~HELP
+    Usage:
+      gtk2mp3 [:options+]
+    Options:
+      -h --help
+      -v --version
+      --minime       \t Real minime
+      --notoggle     \t Minime wont toggle decorated and keep above
+      --notdecorated \t Dont decorate window
+    # Note:
+    # Requires MPD/MPC.
+    # See https://www.musicpd.org/clients/mpc/.
+  HELP
 
-# This is a Gtk3App.
-require 'gtk3app'
-module Gtk3App
-  # Monkey patching a missing feature
-  def Gtk3App.quit!
-    @program.quit!
+  def Gtk2Mp3.init
+    require_relative 'gtk2mp3/mpd'
+    Gtk2Mp3.setup_mpd
   end
-end
 
-module Gtk2Mp3
-  VERSION = '2.5.191217'
-
-  @signal = nil
-  def Gtk2Mp3.signal!(q=nil)
-    if q
-      @signal = q
-    elsif @signal
-      signal,@signal = @signal,nil
-      return signal
+  def Gtk2Mp3.run
+    # This is a Gtk3App.
+    require 'gtk3app'
+    # This Gem.
+    require_relative 'gtk2mp3/config'
+    require_relative 'gtk2mp3/gui'
+    Gtk3App.run(klass:Gtk2Mp3) do  |stage, toolbar, options|
+      gui = Gtk2Mp3.new(stage, toolbar, options){Gtk2Mp3.mpc_command _1}
+      Gtk2Mp3.mpc_idleloop(gui)
     end
-    return nil
   end
-
-  # This Gem.
-  require_relative 'gtk2mp3/config.rb'
-  require_relative 'gtk2mp3/gui.rb'
 end
-
 # Requires:
 #`ruby`
 #`mpd`
