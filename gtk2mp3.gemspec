@@ -24,7 +24,6 @@ SUMMARY
 LICENSE
 README.md
 bin/gtk2mp3
-cache/README.txt
 data/logo.png
 lib/gtk2mp3.rb
 lib/gtk2mp3/config.rb
