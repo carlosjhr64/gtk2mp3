@@ -1,5 +1,5 @@
 class Gtk2Mp3
-  VERSION = '3.0.210919'
+  VERSION = '3.0.210920'
   HELP = <<~HELP
     Usage:
       gtk2mp3 [:options+]

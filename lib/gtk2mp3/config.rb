@@ -20,7 +20,7 @@ class Gtk2Mp3
     id_label!: [:ID_LABEL, :id_label],
 
     HelpFile: 'https://github.com/carlosjhr64/gtk2mp3',
-    Logo: "#{File.dirname File.dirname __dir__}/data/logo.png",
+    Logo: "#{UserSpace::XDG['data']}/gtk3app/gtk2mp3/logo.png",
     about_dialog: {
       set_program_name: 'Gtk2Mp3',
       set_version: VERSION.semantic(0..1),

@@ -1,6 +1,6 @@
 # Gtk2Mp3
 
-* [VERSION 3.0.210919](https://github.com/carlosjhr64/gtk2mp3/releases)
+* [VERSION 3.0.210920](https://github.com/carlosjhr64/gtk2mp3/releases)
 * [github](https://www.github.com/carlosjhr64/gtk2mp3)
 * [rubygems](https://rubygems.org/gems/gtk2mp3)
 
