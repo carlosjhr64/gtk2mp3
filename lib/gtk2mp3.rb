@@ -1,5 +1,5 @@
 class Gtk2Mp3
-  VERSION = '3.0.210920'
+  VERSION = '3.1.210925'
   HELP = <<~HELP
     Usage:
       gtk2mp3 [:options+]
@@ -28,6 +28,7 @@ class Gtk2Mp3
     require_relative 'gtk2mp3/config'
     require_relative 'gtk2mp3/gui'
     Gtk3App.run(klass:Gtk2Mp3) do  |stage, toolbar, options|
+      require CONFIG[:MonkeyPatch] unless CONFIG[:MonkeyPatch].empty?
       gui = Gtk2Mp3.new(stage, toolbar, options){Gtk2Mp3.mpc_command _1}
       Gtk2Mp3.mpc_idleloop(gui)
     end

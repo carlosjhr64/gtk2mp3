@@ -5,8 +5,9 @@ class Gtk2Mp3
 
   def initialize(stage, toolbar, options, &block)
     @toolbox   = Such::Box.new toolbar, :toolbox!
-    Such::Button.new(@toolbox, :next_button!){block.call :next}
-    Such::Button.new(@toolbox, :stop_button!){block.call :stop}
+    CONFIG[:BUTTONS].each do |button|
+      Such::Button.new(@toolbox, button){block.call button}
+    end
     @label = Such::Label.new(stage, :id_label!)
     build_logo_menu(block)
   end
@@ -15,9 +16,9 @@ class Gtk2Mp3
     Gtk3App.logo_press_event do |button|
       case button
       when 1
-        block.call :next
+        block.call :next_button!
       when 2
-        block.call :stop
+        block.call :stop_button!
       when 3
         # Gtk3App's main menu
       end

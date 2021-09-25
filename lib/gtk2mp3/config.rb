@@ -3,9 +3,8 @@ class Gtk2Mp3
   extend Rafini::Empty # for s0,a0,h0
 
   CONFIG = {
-    TOOLBOX: [:horizontal],
-    toolbox: h0,
-    toolbox!: [:TOOLBOX,:toolbox],
+    MonkeyPatch: s0,
+    BUTTONS: [:next_button!, :stop_button!],
 
     NEXT_BUTTON: [label: 'Next!'],
     next_button: h0,
@@ -18,6 +17,10 @@ class Gtk2Mp3
     ID_LABEL: a0,
     id_label: {set_selectable: true},
     id_label!: [:ID_LABEL, :id_label],
+
+    TOOLBOX: [:horizontal],
+    toolbox: h0,
+    toolbox!: [:TOOLBOX,:toolbox],
 
     HelpFile: 'https://github.com/carlosjhr64/gtk2mp3',
     Logo: "#{UserSpace::XDG['data']}/gtk3app/gtk2mp3/logo.png",

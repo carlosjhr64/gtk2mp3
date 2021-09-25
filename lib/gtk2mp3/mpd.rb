@@ -25,18 +25,22 @@ class Gtk2Mp3
 
   def Gtk2Mp3.mpc_command(command)
     case command
-    when :next
-      current = `mpc current`.strip
-      if current.empty?
-        system 'mpc play'
-      else
-        # On my system, if I don't pause first, the sound fails.
-        system 'mpc pause'
+    when :next_button!
+      if system 'mpc pause-if-playing'
+        sleep 0.25
         system 'mpc next'
+      else
+        system 'mpc play'
       end
-    when :stop
+    when :stop_button!
       system 'mpc stop'
+    else
+      Gtk2Mp3.hook(command)
     end
+  end
+
+  def Gtk2Mp3.hook(command)
+    # You can monkey-patch this function
   end
 
   def Gtk2Mp3.mpc_idleloop(gui)

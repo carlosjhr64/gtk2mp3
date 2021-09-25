@@ -4,8 +4,6 @@ carlosjhr
 CarlosJHR
 config
 CONFIG
-dir
-dirname
 Dont
 env
 github
@@ -20,12 +18,12 @@ klass
 MERCHANTABILITY
 minime
 Minime
+MonkeyPatch
 mpc
 MPC
 mpd
 MPD
 musicpd
-noinit
 NONINFRINGEMENT
 notdecorated
 notoggle
@@ -37,7 +35,7 @@ rubygems
 selectable
 stderr
 sublicense
-TODO
+UserSpace
 usr
-USR
 www
+XDG
