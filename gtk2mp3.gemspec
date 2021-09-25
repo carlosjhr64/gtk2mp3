@@ -29,6 +29,7 @@ lib/gtk2mp3.rb
 lib/gtk2mp3/config.rb
 lib/gtk2mp3/gui.rb
 lib/gtk2mp3/mpd.rb
+lib/gtk2mp3/picard_button.rb
   )
   s.executables << 'gtk2mp3'
   s.add_runtime_dependency 'gtk3app', '~> 5.3', '>= 5.3.210919'
