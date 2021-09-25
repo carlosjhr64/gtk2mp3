@@ -32,6 +32,11 @@ Options:
 # Requires MPD/MPC.
 # See https://www.musicpd.org/clients/mpc/.
 ```
+## MORE:
+
+You can add your own custom buttons.
+See my [Picard](lib/gtk2mp3/picard_button.rb) button hook.
+
 ## LICENSE:
 
 (The MIT License)
