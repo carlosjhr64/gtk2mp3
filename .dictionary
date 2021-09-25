@@ -1,3 +1,4 @@
+afiles
 ARGV
 basename
 carlosjhr
@@ -5,6 +6,7 @@ CarlosJHR
 config
 CONFIG
 Dont
+egrep
 env
 github
 gtk
@@ -27,14 +29,22 @@ musicpd
 NONINFRINGEMENT
 notdecorated
 notoggle
+picard
+Picard
+PICARD
 png
 popen
 ps
 Rafini
+rb
+rbon
 rubygems
 selectable
+shellwords
+Shellwords
 stderr
 sublicense
+tfiles
 UserSpace
 usr
 www
