@@ -1,6 +1,6 @@
 # Gtk2Mp3
 
-* [VERSION 3.1.210926](https://github.com/carlosjhr64/gtk2mp3/releases)
+* [VERSION 3.1.230111](https://github.com/carlosjhr64/gtk2mp3/releases)
 * [github](https://www.github.com/carlosjhr64/gtk2mp3)
 * [rubygems](https://rubygems.org/gems/gtk2mp3)
 
@@ -41,7 +41,7 @@ See my [Picard](lib/gtk2mp3/picard_button.rb) button hook.
 
 (The MIT License)
 
-Copyright (c) 2021 CarlosJHR64
+Copyright (c) 2023 CarlosJHR64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

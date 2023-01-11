@@ -71,7 +71,7 @@ quit
 Rafini
 require
 require_relative
-Ruby30
+Ruby32
 run
 s0
 semantic

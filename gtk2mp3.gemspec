@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
 
   s.name     = 'gtk2mp3'
-  s.version  = '3.1.210926'
+  s.version  = '3.1.230111'
 
   s.homepage = 'https://github.com/carlosjhr64/gtk2mp3'
 
   s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2021-09-26'
+  s.date     = '2023-01-11'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
@@ -33,7 +33,7 @@ lib/gtk2mp3/picard_button.rb
   )
   s.executables << 'gtk2mp3'
   s.add_runtime_dependency 'gtk3app', '~> 5.3', '>= 5.3.210919'
-  s.requirements << 'ruby: ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]'
+  s.requirements << 'ruby: ruby 3.2.0 (2022-12-25 revision a528908271) [aarch64-linux]'
   s.requirements << 'mpd: Music Player Daemon 0.22.11 (0.22.11)'
 
 end
