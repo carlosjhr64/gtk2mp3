@@ -23,6 +23,7 @@ App
 gui
 HelpFile
 idleloop
+img
 init
 klass
 minime
