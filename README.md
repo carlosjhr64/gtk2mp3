@@ -35,7 +35,10 @@ Options:
 ## MORE:
 
 You can add your own custom buttons.
-See my [Picard](lib/gtk2mp3/picard_button.rb) button hook.
+See:
+
+* [Picard](lib/gtk2mp3/picard_button.rb) button hook.
+* [Trash](lib/gtk2mp3/trash_button.rb) button hook.
 
 ## LICENSE:
 
