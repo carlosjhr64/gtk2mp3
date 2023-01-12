@@ -19,8 +19,9 @@ class Gtk2Mp3
     when :trash_button!
       if position_file = `mpc --format '%position% %file%' current`.strip
         position,file = position_file.split(' ',2)
-        system('mpc','del',position)
-        system('gio','trash',file)
+        if system('mpc','del',position)
+          system('gio','trash',File.join(CONFIG[:Music],file))
+        end
       end
     end
   end
