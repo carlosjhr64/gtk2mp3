@@ -1,0 +1,14 @@
+#! ruby
+require 'test/unit'
+require 'rafini'
+require 'user_space'
+require 'gtk2mp3'
+require 'gtk2mp3/config'
+require 'such/convention'
+
+class TestConfig < Test::Unit::TestCase
+  def test_config
+    assert_nil Such::Convention.validate(Gtk2Mp3::CONFIG)
+  end
+end
+

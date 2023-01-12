@@ -1,7 +1,7 @@
 #! ruby
 require 'test/unit'
 
-class TestVersion < Test::Unit::TestCase
+class TestRequires < Test::Unit::TestCase
   def test_version
     assert_nothing_raised() do
       # Just check that it loads
