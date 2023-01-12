@@ -3,6 +3,7 @@ class Gtk2Mp3
     @label.text = text
   end
 
+  # gui = Gtk2Mp3.new(stage, toolbar, options){Gtk2Mp3.mpc_command _1}
   def initialize(stage, toolbar, options, &block)
     @toolbox   = Such::Box.new toolbar, :toolbox!
     CONFIG[:BUTTONS].each do |button|

@@ -27,7 +27,7 @@ class Gtk2Mp3
     about_dialog: {
       set_program_name: 'Gtk2Mp3',
       set_version: VERSION.semantic(0..1),
-      set_copyright: '(c) 2021 CarlosJHR64',
+      set_copyright: '(c) 2023 CarlosJHR64',
       set_comments: 'A MPD/MPC "Next!" Button',
       set_website: 'https://github.com/carlosjhr64/gtk2mp3',
       set_website_label: 'See it at GitHub!',
