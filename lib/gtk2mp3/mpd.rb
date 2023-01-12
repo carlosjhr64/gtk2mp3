@@ -45,7 +45,7 @@ class Gtk2Mp3
 
   def Gtk2Mp3.mpc_idleloop(gui)
     Thread.new do
-      IO.popen('mpc idleloop', 'r') do |pipe|
+      IO.popen('mpc idleloop player', 'r') do |pipe|
         while line = pipe.gets
           gui.set_label File.basename(`mpc current`.strip, '.*')
         end
