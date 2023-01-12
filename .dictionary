@@ -7,8 +7,10 @@ com
 config
 CONFIG
 def
+del
 Dont
 env
+gio
 github
 gtk
 mp
@@ -33,6 +35,7 @@ mpc
 idleloop
 mpd
 MPD
+musicbrainz
 musicpd
 NONINFRINGEMENT
 notdecorated
@@ -42,6 +45,7 @@ picard
 Picard
 picard
 PICARD
+Picard
 png
 popen
 ps

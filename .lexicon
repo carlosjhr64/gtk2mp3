@@ -59,6 +59,8 @@ picard_button
 PICARD_BUTTON
 pipe
 popen
+position
+position_file
 push
 puts
 quit
@@ -79,6 +81,7 @@ set_website
 set_website_label
 sleep
 spawn
+split
 stage
 stop_button
 STOP_BUTTON
@@ -93,6 +96,8 @@ Thread
 toolbar
 toolbox
 TOOLBOX
+trash_button
+TRASH_BUTTON
 UserSpace
 using
 VERSION

@@ -16,6 +16,10 @@ $ gtk2mp3
 ```console
 $ gem install gtk2mp3
 ```
+## SCREENSHOT
+
+![Screenshot](screenshot.png)
+
 ## HELP
 ```console
 $ gtk2mp3 --help
