@@ -50,6 +50,7 @@ minime
 MonkeyPatch
 mpc_command
 mpc_idleloop
+mpd_kill
 Music
 new
 next_button
