@@ -28,6 +28,7 @@ Usage:
 Options:
   -h --help
   -v --version
+  -k --mpd_kill  	 Kill the mpd daemon on exit
   --minime       	 Real minime
   --notoggle     	 Minime wont toggle decorated and keep above
   --notdecorated 	 Dont decorate window
